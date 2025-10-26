@@ -3,7 +3,7 @@ services:
 - name: backend
   source_dir: backend
   github:
-    repo: adamoreilly/chatgpt-competitor
+    repo: 0reilly/chatgpt-competitor
     branch: main
     deploy_on_push: true
   run_command: npm start
@@ -42,7 +42,7 @@ services:
 - name: frontend
   source_dir: frontend
   github:
-    repo: adamoreilly/chatgpt-competitor
+    repo: 0reilly/chatgpt-competitor
     branch: main
     deploy_on_push: true
   run_command: npm run build && npx serve -s dist -l 3000
