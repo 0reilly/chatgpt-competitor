@@ -1,0 +1,47 @@
+name: chatgpt-competitor
+services:
+- name: backend
+  source_dir: backend
+  run_command: npm start
+  environment_slug: node-js
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  routes:
+  - path: /api
+  envs:
+  - key: NODE_ENV
+    value: production
+  - key: PORT
+    value: "8080"
+  - key: DEEPSEEK_API_KEY
+    value: ${DEEPSEEK_API_KEY}
+  - key: JWT_SECRET
+    value: ${JWT_SECRET}
+  - key: STRIPE_SECRET_KEY
+    value: ${STRIPE_SECRET_KEY}
+  - key: STRIPE_PUBLISHABLE_KEY
+    value: ${STRIPE_PUBLISHABLE_KEY}
+  - key: STRIPE_PRO_PRICE_ID
+    value: ${STRIPE_PRO_PRICE_ID}
+  - key: STRIPE_ENTERPRISE_PRICE_ID
+    value: ${STRIPE_ENTERPRISE_PRICE_ID}
+  - key: STRIPE_TOKEN_PACK_PRICE_ID
+    value: ${STRIPE_TOKEN_PACK_PRICE_ID}
+
+- name: frontend
+  source_dir: frontend
+  run_command: npm run build && npm run preview
+  environment_slug: node-js
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  routes:
+  - path: /
+  envs:
+  - key: VITE_API_URL
+    value: https://chatgpt-competitor-xxxxx.ondigitalocean.app/api
+  - key: VITE_STRIPE_PUBLISHABLE_KEY
+    value: ${STRIPE_PUBLISHABLE_KEY}
+  - key: VITE_STRIPE_PRO_PRICE_ID
+    value: ${STRIPE_PRO_PRICE_ID}
+  - key: VITE_STRIPE_ENTERPRISE_PRICE_ID
+    value: ${STRIPE_ENTERPRISE_PRICE_ID}

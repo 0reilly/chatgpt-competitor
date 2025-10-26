@@ -1,0 +1,35 @@
+# Ignore files for DigitalOcean App Platform deployment
+.git
+.gitignore
+node_modules
+*.log
+.env
+.env.local
+.env.test
+*.md
+*.txt
+LICENSE
+README.md
+DEPLOYMENT_GUIDE.md
+PAYMENT_INTEGRATION_SUMMARY.md
+PROFITABILITY_ANALYSIS.md
+test-payment-flow.js
+start.sh
+deploy.sh
+.doignore
+.dockerignore
+
+# Development files
+.vscode
+.idea
+*.swp
+*.swo
+
+# Test files
+__tests__
+*.test.js
+coverage
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,48 @@
+name: chatgpt-competitor
+services:
+- name: backend
+  source_dir: /backend
+  github:
+    repo: your-username/chatgpt-competitor
+    branch: main
+  run_command: npm start
+  environment_slug: node-js
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  routes:
+  - path: /api
+  envs:
+  - key: NODE_ENV
+    value: production
+  - key: DEEPSEEK_API_KEY
+    value: ${DEEPSEEK_API_KEY}
+  - key: JWT_SECRET
+    value: ${JWT_SECRET}
+  - key: STRIPE_SECRET_KEY
+    value: ${STRIPE_SECRET_KEY}
+  - key: STRIPE_PUBLISHABLE_KEY
+    value: ${STRIPE_PUBLISHABLE_KEY}
+
+- name: frontend
+  source_dir: /frontend
+  github:
+    repo: your-username/chatgpt-competitor
+    branch: main
+  run_command: npm run build && npm run preview
+  environment_slug: node-js
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  routes:
+  - path: /
+  envs:
+  - key: VITE_API_URL
+    value: https://chatgpt-competitor-xxxxx.ondigitalocean.app/api
+
+static_sites:
+- name: docs
+  source_dir: /docs
+  github:
+    repo: your-username/chatgpt-competitor
+    branch: main
+  routes:
+  - path: /docs
