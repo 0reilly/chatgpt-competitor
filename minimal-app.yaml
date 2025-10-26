@@ -1,0 +1,26 @@
+# Minimal DigitalOcean App Configuration
+# Use this as a template for manual deployment
+
+name: chatgpt-competitor
+services:
+- name: web
+  source_dir: /
+  github:
+    repo: 0reilly/chatgpt-competitor
+    branch: main
+  run_command: npm start
+  build_command: npm run build
+  http_port: 3000
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  envs:
+  - key: NODE_ENV
+    value: production
+  - key: DEEPSEEK_API_KEY
+    value: your_deepseek_api_key_here
+  - key: STRIPE_PUBLISHABLE_KEY
+    value: pk_test_your_stripe_publishable_key
+  - key: STRIPE_SECRET_KEY
+    value: sk_test_your_stripe_secret_key
+  - key: STRIPE_WEBHOOK_SECRET
+    value: whsec_your_webhook_secret
